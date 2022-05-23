@@ -1,0 +1,7 @@
+inp = input()
+m_and_n = inp.split()
+mul = 1
+for item in m_and_n:
+     if int(item) >= 1 and int(item) <= 16:
+          mul *= int(item)
+print(mul // 2)
