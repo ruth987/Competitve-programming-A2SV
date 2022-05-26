@@ -1,0 +1,31 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def insertionSort1(n, arr):
+    m = n-1
+    x = arr[n-1]
+    for i in range(n-1, 0, -1):
+        j  = m-1
+        if x < arr[j]:
+            arr[m] = arr[j]
+            print(*arr)
+            if j == 0:
+                arr[0] = x
+                print(*arr)
+        else:
+            arr[m] = x
+            print(*arr)
+            break
+        m -= 1
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
