@@ -1,0 +1,18 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals = sorted(intervals)
+        answer = []
+        checker = intervals[0]
+        if len(intervals)== 1 :
+            return intervals
+        for i in range(1, len(intervals)):
+            if checker[1] >= intervals[i][0]:
+                checker = [checker[0], max(checker[1], intervals[i][1])]
+                if i == len(intervals)-1:
+                    answer.append(checker)
+            else:
+                answer.append(checker)
+                checker = intervals[i]
+                if i == len(intervals)-1:
+                    answer.append(intervals[i])
+        return answer
