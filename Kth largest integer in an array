@@ -1,0 +1,11 @@
+class Solution:
+    def kthLargestNumber(self, nums: List[str], k: int) -> str:
+            mapObj = map(int, nums)
+            anums = list(mapObj)
+            anums = sorted(anums)
+            anums = anums[::-1]
+
+            for i in range(len(anums)):
+                if i+1 == k:
+                    ans = str(anums[i])
+            return ans
