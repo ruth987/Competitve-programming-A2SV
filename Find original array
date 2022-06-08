@@ -1,0 +1,24 @@
+from collections import Counter
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+            if len(changed) % 2 != 0:
+                return []
+
+            count = Counter(changed) # objects as a key and the frequency as a value
+            answer = []
+            changed.sort()
+
+            for item in changed:
+
+                if item == 0:
+                    if count[item] >= 2:
+                        answer.append(item)
+                        count[item] -= 2
+
+                else:
+                    if count[item] and count[item * 2]:
+                        count[item] -= 1
+                        count[item * 2] -= 1
+                        answer.append(item)
+
+            return answer if len(answer) == len(changed) // 2 else []
