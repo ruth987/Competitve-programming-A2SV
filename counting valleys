@@ -1,0 +1,32 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def countingValleys(steps, path):
+    sum_o, result = 0 ,0
+    for item in path:
+        if item == "D" and sum_o == 0:
+            result += 1
+            sum_o -= 1
+        elif item == "D" and sum_o != 0:
+            sum_o -= 1
+        else:
+            sum_o += 1
+    return result 
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    steps = int(input().strip())
+
+    path = input()
+
+    result = countingValleys(steps, path)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
