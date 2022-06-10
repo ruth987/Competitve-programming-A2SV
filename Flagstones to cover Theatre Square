@@ -1,0 +1,14 @@
+alist = list(map(int, input().split()))
+n = alist[0]
+m = alist[1]
+a = alist[2]
+if n/a == round(n/a):
+    answer1 = n/a
+else:
+    answer1 = (round (n/a + 0.5))
+if m/a == round(m/a) :
+    answer2 = m/a
+else:
+    answer2 = (round (m/a + 0.5))
+answer = answer1 * answer2
+print(int(answer))
