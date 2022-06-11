@@ -1,0 +1,23 @@
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+            piles.sort()
+            piles = piles[::-1]
+            t = int(len(piles)/3)
+            triplets = []
+            a = 0
+            u = 1
+            f =-1
+            c = 1
+            ans = 0
+            for i in range(t):
+                triplets.append(piles[a])
+                triplets.append(piles[u])
+                triplets.append(piles[f])
+                a += 2
+                u += 2
+                f -= 1
+            for j in range(t):
+                ans += triplets[c]
+                c += 3
+
+            return ans
