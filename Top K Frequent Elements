@@ -1,0 +1,16 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+            the_dict = {}
+            lala = []
+            for i in nums:
+                the_dict[i] = 0
+            for i in nums:
+                the_dict[i] += 1
+            the_list = list(the_dict.items())
+            the_list = sorted(the_list, key=lambda item: item[1], reverse=True)
+
+            the_ans = [item[0] for item in the_list]
+            for i in range(k):
+                lala.append(the_ans[i])
+
+            return lala
