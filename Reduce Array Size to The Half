@@ -1,0 +1,18 @@
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+            the_dict = {}
+            for i in arr:
+                the_dict[i] = 0
+            for i in arr:
+                the_dict[i] += 1
+            alist = list(the_dict.items())
+            alist = sorted(alist, key=lambda item: item[1], reverse=True)
+            the_ans = [item[1] for item in alist]
+            c = 0
+            sum = 0
+            for i in the_ans:
+                sum += i
+                c += 1
+                if sum >= len(arr) / 2:
+                    break
+            return c
