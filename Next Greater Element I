@@ -1,0 +1,15 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+            answer = []
+            for i in range(len(nums1)):
+                j = nums2.index(nums1[i])
+                for x in range(j, len(nums2)) :
+                    m = 0
+                    if nums2[x] - nums1[i] > 0:
+                        m = nums2[x]
+                        break
+                if m == 0:
+                    answer.append(-1)
+                else:
+                    answer.append(m)
+            return answer
