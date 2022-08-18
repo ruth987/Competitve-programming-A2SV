@@ -1,0 +1,25 @@
+class Solution:
+    def calculate(self, s: str) -> int:
+            if not s:
+                return 0
+            stack, current_number, operator = [], 0, "+"
+            all_operators = ["+", "-", "*", "/"]
+            nums = set(str(x) for x in range (10))
+
+            for i in range(len(s)):
+                char = s[i]
+                if char in nums:
+                    current_number = current_number*10 +int(char)
+                if char in all_operators or i ==len(s)-1:
+                    if operator == "+":
+                        stack.append(current_number)
+                    elif operator == "-":
+                        stack.append(-current_number)
+                    elif operator =="*":
+                        stack[-1] *= current_number
+                    elif operator =="/":
+                        stack[-1] = int(stack[-1]/current_number)
+                    current_number = 0
+                    operator = char
+            return sum(stack)
+
