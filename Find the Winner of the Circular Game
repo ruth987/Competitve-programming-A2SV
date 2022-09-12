@@ -1,0 +1,33 @@
+class Node:
+    def __init__(self, val = 0, next = None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+        if k == 1:
+            return n
+        
+        # let's create the whole linked list
+        dummy = tail =  Node(0, None)
+        for node in range(1, n+1):
+            tail.next = Node(node)
+            tail = tail.next
+        root = dummy.next
+        tail.next = root
+        
+        def find(head):
+            if head.next == head:
+                return head.val
+            
+            temp = k - 2
+            while temp > 0:
+                head = head.next
+                temp -= 1
+            
+            head.next = head.next.next
+            return find(head.next)
+        
+        return find(root)
+    
+    
