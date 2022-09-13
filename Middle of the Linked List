@@ -1,0 +1,15 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def _val_init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+'''the concept of two pointers in linked list-->the fast and slow pointers'''
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow, fast = head, head
+        
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+        
+        return slow
