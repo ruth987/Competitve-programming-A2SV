@@ -1,0 +1,23 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def pow(x, n):
+            if n>1:
+                return x*(self.myPow(x, n-1))
+            elif n == 1:
+                return x
+            elif n == 0:
+                return 1
+            #if n < 1
+            else:
+                n = -1*n
+                return 1/(x*(self.myPow(x, n-1)))
+                ans = 0
+        if n%2 == 0:
+            ans = pow(x, n/2)
+            ans =ans*ans
+        else:
+            ans = pow(x, n//2)
+            ans = ans*ans*x
+
+        return ans
+          
