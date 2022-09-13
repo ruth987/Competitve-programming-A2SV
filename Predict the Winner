@@ -1,0 +1,28 @@
+class Solution:
+    def PredictTheWinner(self, nums: List[int]) -> bool:
+        
+        memo = {}
+        def dfs(left, right, turn):
+            if (left, right, turn) in memo: return memo[left, right, turn]
+            # -1 for player2 , 0 player 1
+            if left > right:
+                return 0
+            
+            if turn == 1:
+                choice1 = nums[left] + dfs(left+1, right, -1)
+                choice2 = nums[right] + dfs(left, right - 1, -1)
+                
+                memo[left, right,turn] = max(choice1, choice2)
+                return memo[left, right,turn] 
+            if turn == -1:
+                choice1 = dfs(left + 1, right, 1)
+                choice2 = dfs(left, right-1, 1)
+                
+                memo[left, right,turn] = min(choice1, choice2)
+                return memo[left, right,turn]
+            
+        result = dfs(0, len(nums)-1, 1)
+        return sum(nums) - result <= result
+                
+            
+     
