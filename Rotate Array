@@ -1,0 +1,17 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        x = len(nums)
+        y = 0
+        if x-k > 0:
+            for item in nums[x-k:]:
+                nums.insert(y, item)
+                y+=1
+            del nums[x:]
+        elif x-k < 0:
+            moves = k%len(nums)
+            for idx in range(moves):
+                nums.insert(0, nums.pop())
+                
+            
+            
+        
