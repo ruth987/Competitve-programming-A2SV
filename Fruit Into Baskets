@@ -1,0 +1,21 @@
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        left = 0
+        mydict = {}
+        max_len = 0
+        
+        for right in range(len(fruits)):
+            mydict[fruits[right]] = mydict.get(fruits[right], 0) + 1
+            max_len = max(max_len, right - left)
+            
+            while len(mydict) > 2:
+                mydict[fruits[left]] -= 1
+                if mydict[fruits[left]] == 0:
+                    del mydict[fruits[left]]
+                left += 1
+                
+        max_len = max(max_len, right - left +1)
+        return max_len 
+    
+    
+    
