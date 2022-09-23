@@ -1,0 +1,24 @@
+import numpy as np
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = []
+        count = 0
+        mul = np.prod(nums)
+        for idx in range(len(nums)):
+            if nums[idx] == 0:
+                count+=1
+        if count >= 2:
+            answer = [0]*len(nums)
+            return answer
+        for index in range(len(nums)):
+            if nums[index] != 0:
+                answer.append(mul//nums[index])
+            else:
+
+                mul_zero = int(np.prod(nums[:index])*np.prod(nums[index+1:]))
+                answer.append(mul_zero)
+
+        return answer
+                
+                
+        
