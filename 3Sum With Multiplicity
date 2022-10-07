@@ -1,0 +1,37 @@
+class Solution:
+    def threeSumMulti(self, arr: List[int], target: int) -> int:
+        MOD = 10**9 + 7
+        count = {}
+        for x in arr:
+            if x in count:
+                count[x] += 1
+            else:
+                count[x] = 1
+        
+        keys = sorted(count.keys())
+        
+        ans = 0
+        for i, val0 in enumerate(keys):
+            sum2 = target - val0
+            j,k = i, len(keys)-1
+            while j<=k:
+                val1, val2 = keys[j], keys[k]
+                if val1 + val2 < sum2:
+                    j += 1
+                elif val1+val2 > sum2:
+                    k -= 1
+                else:
+                    if i<j<k:
+                        ans += count[val0]*count[val1]*count[val2]
+                    elif i==j<k:
+                        ans += (count[val0] * (count[val0]-1))//2 * count[val2]
+                    elif i<j==k:
+                        ans += count[val0] * (count[val1] * (count[val1] - 1))//2
+                    else:
+                        n = count[val0]
+                        ans += (n * (n-1) * (n-2))//6
+                    
+                    j += 1
+                    k -= 1
+        
+        return ans % MOD
