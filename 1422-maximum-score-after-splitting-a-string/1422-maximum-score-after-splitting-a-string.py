@@ -9,14 +9,16 @@ class Solution:
             return ans
         
         pointer = 1 
-        possible_sum = []
+        possible_sum = 0
         while pointer < len(s):
             #zero in the left
             zeros = countZeros(s[:pointer])
             #ones in the right
             ones = len(s[pointer:])-countZeros(s[pointer:])
-            possible_sum.append(zeros+ones)
+            possible_sum = max(possible_sum,zeros+ones)
             pointer+=1
-   
-        return max(possible_sum)
-    
+        
+        return possible_sum
+            
+        
+
