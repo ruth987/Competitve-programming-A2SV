@@ -4,13 +4,12 @@ class Solution:
             arr[idx] += arr[idx-1]
             
         arr = [0]+arr
-        left, right, count = 1, k, 0
+        left, count = 1, 0
         
-        while right < len(arr):
+        for right in range(k, len(arr)):
             if ((arr[right]-arr[left-1])/k) >= threshold:
                 count += 1
             left+=1
-            right+=1
             
         return count
                     
