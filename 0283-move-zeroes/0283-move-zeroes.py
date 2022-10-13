@@ -3,16 +3,11 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if len(nums) == 1:
-            return nums
-        left, right = 0, 1
-        while right < len(nums):
-            if nums[left] == 0:
-                while right < len(nums) and nums[right] == 0:
-                    right+=1
-                if right < len(nums):
-                    nums[left], nums[right] = nums[right], nums[left]
-            left+=1
-            right+=1
-        
-        
+        def swap(n, idx1, idx2):
+            n[idx1],n[idx2] = n[idx2], n[idx1]
+            return n
+        x = 0
+        for index in range(len(nums)):
+            if nums[index]!=0:
+                swap(nums, x, index)
+                x+=1
