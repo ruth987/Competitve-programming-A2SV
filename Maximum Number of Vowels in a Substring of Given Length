@@ -1,0 +1,26 @@
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        vowels = {'a', 'e', 'i', 'o', 'u'}
+        maxCount = 0
+        
+        i,j = 0,0
+        count = 0
+        
+        while j < len(s):
+            if s[j] in vowels:
+                count += 1
+
+            if j - i + 1 < k: 
+                j += 1
+            else:
+                maxCount = max(maxCount, count)
+                if s[i] in vowels: 
+                    count -= 1
+                    
+                i += 1
+                j += 1
+            
+        return maxCount
+                
+            
+            
