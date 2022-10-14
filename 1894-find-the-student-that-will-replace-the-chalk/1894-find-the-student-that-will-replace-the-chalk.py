@@ -1,23 +1,24 @@
 class Solution:
     def chalkReplacer(self, chalk: List[int], k: int) -> int:
-        sum_chalk = sum(chalk)
-        remainder = k%sum(chalk)
-        if remainder == 0:
+        s = sum(chalk)
+        i = 0
+        check = 0
+        l = len(chalk)
+        
+        if l == 1:
             return 0
-        else:
-            ans = idx = x = 0
-            while remainder >= chalk[idx]:
-                x = 1
-                remainder -= chalk[idx]
-                ans = idx
-                if idx == len(chalk)-1:
-                    idx = 0
-                else:
-                    idx+=1
-                    
-            if x==0 or ans == len(chalk)-1:
-                return 0
-            return ans+1
+        
+        while k >= (s)**2:
+            k -= (s**2)
             
-    
-                
+        while k >= (s) and k != 1:
+            k -= s 
+            check = 1
+            
+        while chalk[i] <= k and  k != 0:
+            k -= chalk[i]
+            i += 1
+            check = 1
+            
+        return i if check else 0
+        
