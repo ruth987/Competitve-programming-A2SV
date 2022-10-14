@@ -1,7 +1,7 @@
 class Solution:
     def corpFlightBookings(self, bookings: List[List[int]], n: int) -> List[int]:
         events = []
-        for (start, end, seats) in bookings:
+        for start, end, seats in bookings:
             events.append((start-1, seats))
             events.append((end+1-1, -seats))
         events.sort()
