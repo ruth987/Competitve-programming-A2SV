@@ -11,8 +11,7 @@ class Solution:
                 elif ops == "D":
                     stack.append(2*int(stack[-1]))
                 else: # ops == "+"
-                    if len(stack) >=2:
-                        stack.append(int(stack[-1])+int(stack[-2]))
+                    stack.append(int(stack[-1])+int(stack[-2]))
                     
         return sum(stack)
                     
