@@ -1,6 +1,9 @@
 class Solution:
-    def removePalindromeSub(self, s: str) -> int:
+     def removePalindromeSub(self, s):
         if s == s[::-1]:
             return 1
-        mydict = collections.Counter(s)
-        return len(mydict)
+        first = s[0]
+        for letter in s:
+            if letter != first:
+                return 2
+        return 1
