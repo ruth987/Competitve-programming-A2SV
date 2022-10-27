@@ -1,8 +1,9 @@
 class Solution:
     def removeDuplicates(self, nums):
-        i = 0
-        for n in nums:
-            if i < 2 or n > nums[i-2]:
-                nums[i] = n
-                i += 1
-        return i
+        idx = 0
+        for number in nums:
+            if idx < 2 or number > nums[idx-2]:
+                nums[idx] = number
+                idx += 1
+        return idx
+                
