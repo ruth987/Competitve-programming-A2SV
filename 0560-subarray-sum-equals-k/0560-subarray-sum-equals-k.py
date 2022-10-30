@@ -12,10 +12,7 @@ class Solution:
             #if number-k in dictionary currentnumber -(number-k) == k 
             if number-k in mydict:
                 count += mydict[number-k]
-            if number in mydict:
-                mydict[number]+=1
-            else:
-                mydict[number] = 1
+            mydict[number] = mydict.get(number, 0)+1
         return count
         
         
