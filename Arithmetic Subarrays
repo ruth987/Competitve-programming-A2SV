@@ -1,0 +1,27 @@
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        #how can i test if it is arthimetic after sorting it.
+        ans = []
+        test_list = []
+        for idx in range(len(l)):
+            test_list = nums[int(l[idx]):int(r[idx])+1]
+            test_list.sort()
+            check = []
+            prev = 0
+            x=0
+            for index in range(1,len(test_list)):
+                prev = test_list[index]-test_list[x]
+                check.append(prev)
+                x+=1
+            print(check)
+            if len(set(check))==1:
+                ans.append(True)
+            else:
+                ans.append(False) 
+        return ans
+                
+
+                
+            
+            
+            
