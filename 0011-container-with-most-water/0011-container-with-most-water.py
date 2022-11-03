@@ -4,15 +4,10 @@ class Solution:
         max_area = 0
         
         while left < right:
-            max_area = max(max_area, (right-left)*min(height[left], height[right]))
-            if height[left]<height[right]:
-                left+=1
-            elif height[left]>height[right]:
-                right-=1
-            else: #when they are equal.
-                left+=1
-                right-=1
+            max_area = max(max_area, (right - left)*min(height[left], height[right]))
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
         return max_area
-            
-                
-            
+    
