@@ -1,24 +1,22 @@
 class Solution:
     def sortColors(self, nums):
-        start, end = 0, len(nums)-1 #for zeros and twos.
-        i = 0 # for the ones.
+        ones, twos, zeros = 0, 0, 0
         
-        def swap(nums, index1, index2):
-            nums[index1], nums[index2] = nums[index2], nums[index1]
-            return nums
-        
-        while i<=end:
-            if nums[i] == 0:
-                swap(nums, i, start)
-                start += 1
-            elif nums[i]==2:
-                swap(nums, i, end)
-                end-=1
-                i-=1
-            i += 1
-        print(nums)
-        
-
-        
+        for number in nums:
+            if number == 0:
+                zeros += 1
+            elif number == 1:
+                ones += 1
+            else:
+                twos += 1
+                
+        for idx in range(len(nums)):
+            if idx < zeros:
+                nums[idx] = 0
+            elif idx >= zeros and idx < zeros+ones:
+                nums[idx] = 1
+            else:
+                nums[idx] = 2
+            
             
         
