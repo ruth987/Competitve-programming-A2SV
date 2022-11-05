@@ -1,22 +1,19 @@
 class Solution:
     def sortColors(self, nums):
-        ones, twos, zeros = 0, 0, 0
+        start, end = 0, len(nums)-1
+        i = 0 # the index that goes through the array
         
-        for number in nums:
-            if number == 0:
-                zeros += 1
-            elif number == 1:
-                ones += 1
-            else:
-                twos += 1
-                
-        for idx in range(len(nums)):
-            if idx < zeros:
-                nums[idx] = 0
-            elif idx >= zeros and idx < zeros+ones:
-                nums[idx] = 1
-            else:
-                nums[idx] = 2
+        while i <= end:
+            if nums[i] == 0:
+                nums[i], nums[start] = nums[start], nums[i]
+                start+=1
+            elif nums[i] == 2:
+                nums[i], nums[end] = nums[end], nums[i]
+                end-=1
+                i-=1
+            i+=1                            
+        print(nums)
+
             
-            
+        
         
