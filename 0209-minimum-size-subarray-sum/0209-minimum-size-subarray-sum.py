@@ -19,4 +19,4 @@ class Solution:
         if min_len == len(nums)+1:
             return 0
         return min_len
-  
+        
