@@ -1,19 +1,22 @@
 class Solution:
     def makeGood(self, s: str) -> str:
+        mydict = {
+            "a":"A","b":"B","c":"C","d":"D","e":"E","f":"F","g":"G","h":"H",
+            "i":"I","j":"J","k":"K","l":"L","m":"M","n":"N","o":"O","p":"P",
+            "q":"Q","r":"R","s":"S","t":"T","u":"U","v":"V","w":"W","x":"X",
+            "y":"Y","z":"Z",
+            "A":"a","B":"b","C":"c","D":"d","E":"e","F":"f","G":"g","H":"h",
+            "I":"i","J":"j","K":"k","L":"l","M":"m","N":"n","O":"o","P":"p",
+            "Q":"q","R":"r","S":"s","T":"t","U":"u","V":"v","W":"w","X":"x",
+            "Y":"y","Z":"z"
+        }
         stack = []
-        
         for letter in s:
             x = 0
-            if stack and letter.isupper() and stack[-1]==letter.lower():
+            if stack and letter == mydict[stack[-1]]:
                 x = 1
                 stack.pop()
-                
-            if stack and letter.islower() and stack[-1]==letter.upper():
-                x = 1
-                stack.pop()
-                
             if x == 0:
                 stack.append(letter)
                 
         return "".join(stack)
-        
