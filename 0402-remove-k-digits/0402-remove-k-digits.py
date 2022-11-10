@@ -8,9 +8,7 @@ class Solution:
                 stack.pop()
                 k-=1
             stack.append(number)
-        while k > 0:
-            stack.pop()
-            k-=1
+        stack = stack[:len(stack) - k]
         if not stack:
             return "0"
         return str(int("".join(stack)))
