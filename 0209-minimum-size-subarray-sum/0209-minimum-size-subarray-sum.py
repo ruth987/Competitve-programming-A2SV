@@ -8,11 +8,11 @@ class Solution:
         left, right = 1, 1
         min_len = len(nums)+1
         
-        while right < len(nums):
+        for right in range(1, len(nums)):
             while nums[right]-nums[left-1] >= target:
                 min_len = min(min_len, right-left+1)
                 left+=1
-            right+=1
+        
         if min_len == len(nums)+1:
             return 0
         return min_len
