@@ -1,29 +1,27 @@
 class Solution:
     def maximumSubarraySum(self, nums: List[int], k: int) -> int:
         seen = set()
-        sm = 0 
-        ans = 0
-        right = 0 
-        left = 0 
+        right,left,ans,sub_sum = 0,0,0,0
+
         while right < len(nums): 
             if len(seen) != k:
                 if nums[right] not in seen: 
                     seen.add(nums[right])
-                    sm += nums[right]
+                    sub_sum += nums[right]
                     right+=1 
                 else: 
                     seen.remove(nums[left])
-                    sm -= nums[left]
+                    sub_sum -= nums[left]
                     left += 1 
             else: 
-                ans = ans if ans > sm else sm
+                ans = ans if ans > sub_sum else sub_sum
                 seen.remove(nums[left])
-                sm -= nums[left]
+                sub_sum -= nums[left]
                 left += 1
 
 
         if len(seen) == k: 
-            ans = ans if ans > sm else sm
+            ans = ans if ans > sub_sum else sub_sum
         return ans 
         """
         left, right = 0, k-1
