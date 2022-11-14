@@ -4,7 +4,9 @@ class Solution:
         chs = set()
         max_len = 0
         
-        while right < len(s):
+        if not s:
+            return 0
+        for right in range(len(s)):
             if s[right] not in chs:
                 chs.add(s[right])
             else: #if it is in the chs
@@ -13,7 +15,7 @@ class Solution:
                     chs.remove(s[left])
                     left+=1
                 left+=1
-            right +=1 
-        max_len = max(max_len, right-left)
+
+        max_len = max(max_len, right-left+1)
         return max_len
                 
