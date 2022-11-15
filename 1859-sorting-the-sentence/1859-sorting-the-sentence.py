@@ -1,18 +1,21 @@
 class Solution:
     def sortSentence(self, s: str) -> str:
-        bucket = [""]*10
+        str_list = s.split(' ')
+        tracker = ['']*len(str_list)
+        
+        for item in str_list:
+            tracker[int(item[-1])-1] = item[:-1]
+            
+        output_str =''
+        
+        for item in range(len(tracker)):
+            
+            if item== len(tracker)-1:
+                output_str+= tracker[item]
 
-        s = s.split(" ")
-
-        for wr in s:
-            bucket[int(wr[-1])] += wr
-
-        res = ""
-
-        for wr in bucket:
-            if wr != "":
-                res += wr[:-1] + " "
-
-        return res[:-1]
+            else:
+                 output_str+= tracker[item] + ' '
+                    
+        return output_str
         
         
