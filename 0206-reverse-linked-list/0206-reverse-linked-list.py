@@ -5,13 +5,16 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev, curr = None, head
-        
-        while curr:
-            nxt = curr.next 
-            curr.next = prev
-            prev = curr
-            curr = nxt
-            
-        return prev
+        """
+        emp-->1-->2-->3-->4-->5-->emp
+             prev cur  curr.next
 
+        """
+        previous, current = None, head
+        while current: #i want the while loop to keep going as long as the curr isnot null
+            nxt = current.next
+            current.next = previous
+            previous = current
+            current = nxt
+        
+        return previous
