@@ -1,20 +1,20 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        nums1_dict = collections.Counter(nums1)
-        nums2_dict = collections.Counter(nums2)
+        nums1.sort()
+        nums2.sort()
+
+        one, two=0, 0 
+        answer = []
         
-        answer, saved = [], []
-        sav = set()
-        
-        for number in nums1:
-            if number not in sav and number in nums1_dict and number in nums2_dict:
-                sav.add(number)
-                saved.append(number) 
-        
-        for num in saved:
-            for i in range(min(nums1_dict[num], nums2_dict[num])):
-                answer.append(num)
+        while one < len(nums1) and two < len(nums2):
+            if nums1[one] < nums2[two]:
+                one+=1
+            elif nums2[two] < nums1[one]:
+                two+=1
+            else:
+                answer.append(nums1[one])
+                one+=1
+                two+=1
                 
         return answer
-    
     
