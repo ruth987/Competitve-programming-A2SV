@@ -4,7 +4,7 @@ class Solution:
         sms = 0
         sum_diff = []
         
-        for index in range(len(nums)-1): #0, 1, 2
+        for index in range(len(nums)-1):
             sms += nums[index]
             left, right = index+1, len(nums)-1
             
@@ -12,6 +12,9 @@ class Solution:
                 add = nums[left]+nums[right]
                 sms += add
                 sum_diff.append((sms, target-sms))
+                
+                if sms ==target:
+                    return target
 
                 if sms > target:
                     right-=1
