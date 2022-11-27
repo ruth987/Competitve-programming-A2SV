@@ -4,17 +4,16 @@ class Solution:
         aset, output = set(), []
         
         
-        while right < len(s):
+        for right in range(10, len(s)):
             string = s[left:right]
             if string in aset:
                 output.append(string)
             else: # if string not in aset
                 aset.add(string)
             left+=1
-            right+=1
             
-        if s[left:right] in aset:
-            output.append(s[left:right])
+        if s[left:right+1] in aset:
+            output.append(s[left:right+1])
 
         return list(set(output))
                 
