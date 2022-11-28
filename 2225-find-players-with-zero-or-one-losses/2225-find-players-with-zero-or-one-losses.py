@@ -1,6 +1,6 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        """i got into a2sv yeeeee"""
+        """i got into a2sv yeeeee, wooohu"""
         winners = [match[0] for match in matches]
         losers = [match[1] for match in matches]
         perfect_winners = list(set(winners) - set(losers))
@@ -10,3 +10,4 @@ class Solution:
             if loser_counter[loser] == 1:
                 one_lost.append(loser)
         return [sorted(perfect_winners), sorted(one_lost)]
+    
