@@ -1,5 +1,7 @@
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
+        # time comp : o(sqrt(n))
+        
         n = 1
         s = 0
         while s < num:
