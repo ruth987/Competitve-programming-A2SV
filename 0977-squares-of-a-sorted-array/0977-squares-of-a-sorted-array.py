@@ -4,11 +4,13 @@ class Solution:
         answer = []
         
         while left <= right:
-            if nums[left]*nums[left] > nums[right]*nums[right]:
-                answer.append(nums[left]*nums[left])
+            ll = nums[left]*nums[left]
+            rr = nums[right]*nums[right]
+            if ll > rr:
+                answer.append(ll)
                 left+=1
             else:
-                answer.append(nums[right]*nums[right])
+                answer.append(rr)
                 right-=1
                 
         return answer[::-1]
