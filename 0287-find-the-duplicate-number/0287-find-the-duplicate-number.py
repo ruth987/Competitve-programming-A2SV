@@ -3,12 +3,16 @@ class Solution:
         """
         we can simply do this problem using o(n) space complexity but the triccky part 
         is how can we do it using o(1) space complexity??
-        """
-        seen = set()
         
-        for num in nums:
-            if num not in seen:
-                seen.add(num)
-            else: # if num in seen
-                return num
+        so how can we do it without using extra space?
+        this approach makes the time complexity a little slower because we are sorting
+        the array but the space complexity becomes constant times.
+        
+        """
+        nums.sort()
+        
+        for idx in range(1, len(nums)):
+            if nums[idx]==nums[idx-1]:
+                return nums[idx]
             
+        
