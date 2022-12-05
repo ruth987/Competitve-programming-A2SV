@@ -1,0 +1,23 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        alist = []
+        while head:
+            alist.append(head.val)
+            head = head.next
+
+        monostack = []
+        answer = [0]*len(alist)
+        
+        for idx in range(len(alist)):
+            while monostack and alist[idx] > alist[monostack[-1]]:
+                n = monostack.pop()
+                answer[n] = alist[idx]
+            monostack.append(idx)
+
+        return answer
+        
