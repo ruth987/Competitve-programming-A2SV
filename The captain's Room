@@ -1,0 +1,13 @@
+k = int(input())
+arr = list(input().split())
+mydict = {}
+
+for num in arr:
+    if num in mydict:
+        mydict[num] += 1
+    else:
+        mydict[num] = 1
+for k,v in mydict.items():
+    if v == 1:
+        print(k)
+        break
