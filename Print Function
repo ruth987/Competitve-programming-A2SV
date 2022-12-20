@@ -1,0 +1,6 @@
+if __name__ == '__main__':
+    n = int(input())
+    answer = ""
+    for num in range(1, n+1):
+        answer += str(num)
+    print(answer)
