@@ -1,0 +1,17 @@
+#n == given array length, m == set length
+# elements of the array
+# A elements
+# B elements
+firstLine = list(input().split())
+n = firstLine[0]
+m = firstLine[1]
+arr = list(input().split())
+A = set(input().split())
+B = set(input().split())
+happiness = 0
+for number in arr:
+    if number in A:
+        happiness += 1
+    elif number in B:
+        happiness -= 1
+print(happiness)
