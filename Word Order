@@ -1,0 +1,12 @@
+n = int(input())
+hashmap = {}
+for _ in range(n):
+    word = input()
+    if word in hashmap:
+        hashmap[word] += 1
+    else:
+        hashmap[word] = 1
+print(len(hashmap))
+for val in hashmap.values():
+    print(val, end = " ")
+    
