@@ -1,0 +1,10 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+
+        s_dict = collections.Counter(s)
+        t_dict = collections.Counter(t)
+
+        for letter in t:
+            if t_dict[letter] != s_dict[letter]:
+                return letter
+        
