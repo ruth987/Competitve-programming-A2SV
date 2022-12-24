@@ -1,0 +1,26 @@
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+T = int(input())
+for _ in range(T):
+    n = int(input())
+    blocks = list(map(int,input().split()))
+    left, right = 0, n-1
+    cube = []
+    ans = "Yes"
+    if blocks[right]>=blocks[left]:
+        block_at_top=blocks[right]
+    else:
+        block_at_top=blocks[left]
+    
+    while left<=right:
+        if blocks[left]>=blocks[right] and block_at_top>=blocks[left]:
+             block_at_top=blocks[left]
+             left+=1
+        elif blocks[left]<=blocks[right] and block_at_top>=blocks[right]:
+            block_at_top=blocks[right]
+            right-=1
+        else:
+            ans="No" 
+            break  
+    print(ans)
