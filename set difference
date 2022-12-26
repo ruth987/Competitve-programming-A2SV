@@ -1,0 +1,7 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+set1_len = int(input())
+set1_content = set(map(int, input().split()))
+set2_len = int(input())
+set2_content = set(map(int, input().split()))
+print(len(set1_content.difference(set2_content)))
+
