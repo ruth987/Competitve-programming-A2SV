@@ -1,0 +1,6 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+nEnglish = int(input())
+englishSet = set(map(int, input().split()))
+nFranch = int(input())
+frenchSet = set(map(int, input().split()))
+print(len(englishSet.union(frenchSet)))
