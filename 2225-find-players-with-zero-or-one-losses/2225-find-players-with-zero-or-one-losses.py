@@ -1,13 +1,23 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        """i got into a2sv yeeeee, wooohu"""
-        winners = [match[0] for match in matches]
-        losers = [match[1] for match in matches]
-        perfect_winners = list(set(winners) - set(losers))
-        loser_counter = collections.Counter(losers)
-        one_lost = []
-        for loser in loser_counter:
-            if loser_counter[loser] == 1:
-                one_lost.append(loser)
-        return [sorted(perfect_winners), sorted(one_lost)]
-    
+        """
+        
+        """
+        winers = []
+        losers = []
+        losers_counter = {} # lets create this first
+        
+        for match in matches:
+            if match[1] in losers_counter:
+                losers_counter[match[1]] += 1
+            else:
+                losers_counter[match[1]] = 1
+        for match in matches:
+            if match[0] not in losers_counter:
+                winers.append(match[0])
+        for key,val in losers_counter.items():
+            if val == 1:
+                losers.append(key)
+            
+        return [sorted(list(set(winers))) , sorted(losers)]
+        
