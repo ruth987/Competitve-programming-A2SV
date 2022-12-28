@@ -1,0 +1,10 @@
+A = set(map(int, input().split()))
+n = int(input())
+x = True
+
+for _ in range(n):
+    B = set(map(int, input().split()))
+    if A.issuperset(B) == False:
+        x = False
+        break
+print(x)
