@@ -1,9 +1,16 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
-        answer = [0]*len(boxes)
+        ones_index = []
         
         for idx in range(len(boxes)):
-            for i in range(len(boxes)):
-                if i != idx and boxes[i]=="1":
+            if  boxes[idx]=="1":
+                ones_index.append(idx)
+
+        answer = [0]*len(boxes)
+        for idx in range(len(boxes)):
+            for i in ones_index:
+                if i != idx:
                     answer[idx] += abs(i-idx)
+                    
         return answer
+                
