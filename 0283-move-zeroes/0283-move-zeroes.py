@@ -3,11 +3,10 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        def swap(n, idx1, idx2):
-            n[idx1],n[idx2] = n[idx2], n[idx1]
-            return n
-        x = 0
-        for index in range(len(nums)):
-            if nums[index]!=0:
-                swap(nums, x, index)
-                x+=1
+        i = 0
+        for idx in range(len(nums)):
+            if nums[idx] != 0:
+                nums[idx], nums[i] = nums[i], nums[idx]
+                i+=1
+                
+                
