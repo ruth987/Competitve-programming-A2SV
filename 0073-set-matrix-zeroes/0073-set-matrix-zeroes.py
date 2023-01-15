@@ -5,20 +5,24 @@ class Solution:
         """
         row_len = len(matrix)
         col_len = len(matrix[0])
-        zeros_row = set()
-        zeros_col = set()
-        
+
         for row in range(row_len):
             for col in range(col_len):
                 if matrix[row][col] == 0:
-                    zeros_row.add(row)
-                    zeros_col.add(col)
+                    for c in range(col_len):
+                        if matrix[row][c] != 0:
+                            matrix[row][c] = "#"
+                        
+                    for r in range(row_len):
+                        if matrix[r][col] != 0:
+                            matrix[r][col] = "#"
         
         for r in range(row_len):
             for c in range(col_len):
-                if r in zeros_row or c in zeros_col:
+                if matrix[r][c] == "#":
                     matrix[r][c] = 0
         
+
         #print(matrix)
         
         
