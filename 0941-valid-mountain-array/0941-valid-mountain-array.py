@@ -1,28 +1,22 @@
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
-        if len(arr)<3:
+        n = len(arr)
+        if n<3:
             return False
         
-        up, down = False, False
+        pivot = max(arr)
+        idx = arr.index(pivot)
         
-        for idx in range(1, len(arr)):
-            if arr[idx] > arr[idx-1] and down == False:
-                up  = True
-            elif arr[idx] > arr[idx-1] and down == True:
+        if idx == 0  or idx == n-1:
+            return False
+        for i in range(idx- 1):
+            if arr[i]>= arr[i+1]:
                 return False
-            elif arr[idx] < arr[idx-1] and up == True:
-                down = True
-            
-            elif arr[idx] < arr[idx-1] and up == False:
+        for j in range(idx, n-1) :
+            if arr[j] <= arr[j+1]:
                 return False
-            
-            elif arr[idx]==arr[idx-1]:
-                return False
-            
-        if up == True and down == True:
-            return True
-        
-        return False
+
+        return True
             
 
                 
