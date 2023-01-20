@@ -1,17 +1,15 @@
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
-        piles.sort(reverse = True)
-        n = len(piles)/3 # the number of piles i will take.
-        
-        pocket = 0
-        x = 0
-        for idx in range(len(piles)):
-            if idx%2 != 0:
-                pocket += piles[idx]
-                x += 1
-            if x==n:
-                return pocket
-            
-            
-            
-  
+        piles.sort()
+        piles = piles[::-1]
+        n = len(piles)//3
+        ans = []
+        idx = 1
+        i = 0
+        while i<n:
+            ans.append(piles[idx])
+            i+=1
+            idx += 2
+        print(ans)
+        return sum(ans)
+    
