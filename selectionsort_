@@ -1,0 +1,14 @@
+
+class Solution: 
+    def select(self, arr, i):
+        min_ = i
+        for idx in range(i,len(arr)):
+            if arr[idx]<arr[min_]:
+                min_ = idx
+        return min_
+        
+    def selectionSort(self, arr,n):
+        for index in range(n):
+            num = Solution.select(self,arr,index)
+            arr[index],arr[num] = arr[num],arr[index]
+        return arr   
