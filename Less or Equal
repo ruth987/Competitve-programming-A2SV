@@ -1,0 +1,17 @@
+n_k = list(map(int, input().split()))
+n = n_k[0]
+k = n_k[1]
+alist = list(map(int, input().split()))
+alist.sort()
+ 
+if k == 0:
+    if alist[0]==1:
+        print(-1)
+    else:
+        print(1)
+elif k > n:
+    print(-1)
+elif k<n and alist[k-1]==alist[k]:
+    print(-1)
+else:
+    print(alist[k-1])
