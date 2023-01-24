@@ -3,10 +3,10 @@
 class Solution:
     def arraySortedOrNot(self, arr, n):
         # code here
-        sorted_ = 1
+        sorted_ = True
         for i in range(1, n):
             if arr[i] < arr[i-1]:
-                sorted_ = 0
+                sorted_ = False
         return sorted_
 
 
