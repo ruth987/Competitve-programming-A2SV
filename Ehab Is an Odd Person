@@ -1,0 +1,12 @@
+n = int(input())
+arr = list(map(int, input().split()))
+
+no_of_evens = 0
+for num in arr:
+    if num%2 == 0:
+        no_of_evens+=1
+
+if no_of_evens == 0 or no_of_evens == n:
+    print(*arr)
+else:
+    print(*(sorted(arr)))
