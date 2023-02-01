@@ -5,31 +5,21 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        slow, fast = head, head
-        
-        #to get to the middle (slow)
-        while fast and fast.next:
-            fast = fast.next.next
-            slow = slow.next
+        """
+        brute force
+        """
+        curr = head
+        vals = []
+        while curr:
+            vals.append(curr)
+            curr = curr.next
             
-        #reverse from slow to the end
-        prev = None
-        
-        while slow:
-            nxt = slow.next
-            slow.next = prev
-            prev = slow
-            slow = nxt
-        #compair the two (head and prev) linked lists
-        left, right = head, prev
-        
-        while right:
-            if left.val != right.val:
+        left, right = 0, len(vals)-1
+        while left < right:
+            if vals[left].val != vals[right].val:
                 return False
-            left = left.next
-            right = right.next
+            left += 1
+            right -= 1
+            
         return True
-    
-    
-    
-    
+            
