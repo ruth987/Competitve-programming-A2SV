@@ -5,21 +5,31 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        """
-        brute force
-        """
-        curr = head
-        vals = []
-        while curr:
-            vals.append(curr)
-            curr = curr.next
-            
-        left, right = 0, len(vals)-1
-        while left < right:
-            if vals[left].val != vals[right].val:
+        slow, fast = head, head
+        count = 0
+        while fast and fast.next: #till the fast pointer reaches the end of the list
+            slow = slow.next
+            fast = fast.next.next
+            count += 1
+        # print(count)
+        prev = None
+        while slow:
+            nxt = slow.next
+            slow.next = prev
+            prev = slow
+            slow = nxt
+
+        # prev is the last existing slow node
+        while count > 0:
+            # print(prev.val, head.val)
+            if prev.val != head.val:
                 return False
-            left += 1
-            right -= 1
-            
+            head = head.next
+            prev = prev.next
+            count -= 1
         return True
+        
             
+            
+            
+        
