@@ -13,5 +13,6 @@ class Solution:
         if target < nums[0]:
             return 0
         return mid+1
+    
                 
             
