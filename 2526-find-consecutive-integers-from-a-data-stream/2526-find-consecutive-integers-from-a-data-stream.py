@@ -5,7 +5,6 @@ class DataStream:
         self.value = value
         self.length = k
         self.count = 0
-        self.ans = []
     def consec(self, num: int) -> bool:
         if num != self.value:
             self.count = 0
