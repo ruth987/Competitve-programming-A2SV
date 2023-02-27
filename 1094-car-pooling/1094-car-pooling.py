@@ -11,15 +11,18 @@ class Solution:
 
         # create an array with a size of their difference and initialize as zeros
         prefix = [0]*(max_des+1)
+        
         # add numpassengers at the start and substract from the end
         for num_p, start, end in trips:
-            print(start-1, end-1)
             prefix[start] += num_p
             prefix[end] -= num_p
+            
         # calculate their prefix sum
-        prefix = list(accumulate(prefix))
-        # find the maximum value and compair with the capacity
-        max_val = max(prefix)
-        if max_val > capacity:
+        if prefix[0] > capacity:
             return False
+        for idx in range(1,len(prefix)):
+            prefix[idx] += prefix[idx-1]
+            
+            if prefix[idx] > capacity:
+                return False
         return True
