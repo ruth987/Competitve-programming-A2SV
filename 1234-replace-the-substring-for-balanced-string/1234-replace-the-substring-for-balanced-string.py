@@ -5,8 +5,7 @@ class Solution:
         mydict = {"Q":0 ,"W":0 ,"E":0 ,"R":0 }
         for ch in s:
             mydict[ch]+=1
-        print(mydict)
-        print(n)
+
         goal = {}
         minlen = float(inf)
         for key,val in mydict.items():
@@ -24,8 +23,7 @@ class Solution:
                 if goal[key]>check[key]:
                     found = False
                     break
-            # print(check, goal, found)     
-            # print(s[left:right+1])
+
             while found and left <= right:
                 
                 minlen = min(minlen, right-left+1)
@@ -35,9 +33,6 @@ class Solution:
                 for key,val in goal.items():
                     if goal[key]>check[key]:
                         found = False
-                        break
-                # print(s[left:right+1], found)
-    
         
         return minlen
                 
