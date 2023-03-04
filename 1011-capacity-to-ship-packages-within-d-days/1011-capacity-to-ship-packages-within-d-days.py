@@ -1,7 +1,7 @@
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
 
-        left, right = 1, sum(weights)
+        left, right = 0, sum(weights)
         ans = right
         
         while left <= right:
