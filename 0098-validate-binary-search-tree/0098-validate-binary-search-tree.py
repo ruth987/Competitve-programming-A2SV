@@ -6,20 +6,12 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        # do the inorder traverse (LPR)
-        def inorder(root):
-            left, right = [], []
-            
+        def validate(root, left, right):
             if not root:
-                return []
-            if root.left:
-                left = inorder(root.left)
-            if root.right:
-                right = inorder(root.right)
-
-            return left+[root.val]+right
-        
-        ans = inorder(root)
-        if len(set(ans)) != len(ans):
-            return False
-        return ans == sorted(ans)
+                return True
+            if left >= root.val or root.val >= right:
+                return False
+            return (validate(root.left, left, root.val) and validate(root.right, root.val, right))
+            
+            
+        return validate(root, float('-inf'), float('inf'))
