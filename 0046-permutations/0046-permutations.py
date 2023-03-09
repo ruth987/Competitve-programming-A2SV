@@ -3,18 +3,19 @@ class Solution:
         res = []
         ln = len(nums)
 
-        def backtrack(nums,arr):
-
+        def backtrack(arr):
+                
             if len(arr) == ln:
                 res.append(arr[::])
                 return
             
             for i in range(len(nums)):
-                arr.append(nums[i])
-                backtrack(nums[:i] + nums[i+1:],arr)
-                arr.pop()
-                
-        backtrack(nums, [])
+                if nums[i] not in arr:
+                    arr.append(nums[i])
+                    backtrack(arr)
+                    arr.pop()
+                    
+        backtrack( [])
         return res
             
             
