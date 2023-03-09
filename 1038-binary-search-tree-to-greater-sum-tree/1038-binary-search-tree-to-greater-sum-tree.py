@@ -16,9 +16,8 @@ class Solution:
             if not root:
                 return 
             sumbst(root.right)
-            tmp = root.val
-            root.val += sum_
-            sum_ += tmp
+            sum_ += root.val
+            root.val = sum_
             sumbst(root.left)
             
 
