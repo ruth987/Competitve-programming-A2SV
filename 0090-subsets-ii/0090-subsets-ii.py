@@ -3,6 +3,7 @@ class Solution:
 
         res = []
         aset = set()
+        nums.sort()
         
         def backtrack(nums, i, arr):
             if len(res) == 2**len(nums):
@@ -11,9 +12,9 @@ class Solution:
             if i < len(nums):
                 arr.append(nums[i])
                 backtrack(nums, i+1, arr)
-                if tuple(sorted(arr)) not in aset:
+                if tuple(arr) not in aset:
                     res.append(arr[::])
-                    aset.add(tuple(sorted(arr)))
+                    aset.add(tuple(arr))
                 
                 arr.pop()
                 backtrack(nums, i+1, arr)
