@@ -8,29 +8,33 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        
-        
-        def traverse(root, val):
+        # key=depth, value=values at that depth from the root
+        mydict = {}
+        def calc_depth(root, dep):
             if not root:
                 return 
             if root.left:
-                if val not in mydict:
-                    mydict[val] = [root.left.val]
+                if dep in mydict:
+                    mydict[dep].append(root.left.val)
                 else:
-                    mydict[val].append(root.left.val)
-                traverse(root.left, val+1)
+                    mydict[dep] = [root.left.val]
+                    
+                left = calc_depth(root.left, dep+1)
+                
             if root.right:
-                if val not in mydict:
-                    mydict[val] = [root.right.val]
+                if dep in mydict:
+                    mydict[dep].append(root.right.val)
                 else:
-                    mydict[val].append(root.right.val)
-                traverse(root.right, val+1)
-
-        mydict = {0:[root.val]}
-        traverse(root, 1)
-        ans = []
+                    mydict[dep] = [root.right.val]
+                    
+                right = calc_depth(root.right, dep+1)
+            
+        calc_depth(root, 0)
+        # print(mydict)
+        ans  = [[root.val]]
         for key,val in mydict.items():
             ans.append(val)
-        
         return ans
+            
+        
             
