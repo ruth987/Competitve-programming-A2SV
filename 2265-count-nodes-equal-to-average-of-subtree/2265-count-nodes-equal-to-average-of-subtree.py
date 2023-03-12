@@ -6,16 +6,14 @@
 #         self.right = right
 class Solution:
     def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
-        """
-        store the sum of all underneath in the root's value
-        """ 
+
         sum_ = 0
         count = 0
         def subtree_sum(root):
-            nonlocal sum_
-            nonlocal count
+            nonlocal sum_, count
             if not root:
                 return 
+            
             sum_ += root.val
             count += 1
             if root.left:
@@ -28,10 +26,9 @@ class Solution:
             nonlocal ans, sum_, count
             if not root:
                 return
-            sum_ = 0
-            count = 0
+            
+            sum_, count = 0, 0
             subtree_sum(root)
-
             if count != 0 and root.val == (sum_)//count:
                 ans += 1
                 
