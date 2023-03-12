@@ -13,28 +13,22 @@ class Solution:
         def calc_depth(root, dep):
             if not root:
                 return 
-            if root.left:
-                if dep in mydict:
-                    mydict[dep].append(root.left.val)
-                else:
-                    mydict[dep] = [root.left.val]
-                    
-                left = calc_depth(root.left, dep+1)
-                
-            if root.right:
-                if dep in mydict:
-                    mydict[dep].append(root.right.val)
-                else:
-                    mydict[dep] = [root.right.val]
-                    
-                right = calc_depth(root.right, dep+1)
+            
+            if dep in mydict:
+                mydict[dep].append(root.val)
+            else:
+                mydict[dep] = [root.val]
+
+            left = calc_depth(root.left, dep+1)
+            right = calc_depth(root.right, dep+1)
             
         calc_depth(root, 0)
-        # print(mydict)
-        ans  = [[root.val]]
+        ans = []
         for key,val in mydict.items():
             ans.append(val)
+
         return ans
+    
             
         
             
