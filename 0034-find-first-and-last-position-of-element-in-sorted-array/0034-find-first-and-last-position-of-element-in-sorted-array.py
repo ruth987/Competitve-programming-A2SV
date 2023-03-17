@@ -1,27 +1,19 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        """
-        return [the first time u see target, the last time you see target]
+
+        def search(x):
+            left, right = 0, len(nums)
+            while left < right:
+                mid = (left+right) //2
+                if nums[mid] < x:
+                    left = mid + 1
+                else:
+                    right = mid
+            return left
         
-        """
-        left, right = 0, len(nums)-1
-        # nums = ["x"]+nums+["x"]
+        left_most = search(target)
+        right_most = search(target+1) -1
+        if left_most <= right_most:
+            return [left_most, right_most]
+        return [-1, -1]
         
-        while left <= right:
-            mid = (left+right)//2
-            if nums[mid] == target:
-                start, end  = mid, mid
-                while end < len(nums) and nums[end] == target:
-                    end += 1
-                while start>=0 and start < len(nums) and nums[start] == target:
-                    start -= 1
-                return [start+1, end-1]
-            
-            elif nums[mid] > target:
-                right = mid-1
-                
-            else:
-                left = mid+1
-            
-        return [-1,-1]
-    
