@@ -1,0 +1,18 @@
+import math
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+
+    firstone = 0
+    b = n.bit_length()
+    x = n & (-n)
+
+    if n == 1:
+        print(3)
+    elif n%2 != 0:
+        print(1)
+    elif x==n:
+        print(x+1)
+    else:
+        print(x)
