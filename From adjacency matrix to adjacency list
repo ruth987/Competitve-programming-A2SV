@@ -1,0 +1,9 @@
+n = int(input())
+
+for _ in range(n):
+    arr = list(map(int, input().split()))
+    ans = []
+    for idx in range(len(arr)):
+        if arr[idx] == 1:
+            ans.append(idx+1)
+    print(len(ans), *ans)
