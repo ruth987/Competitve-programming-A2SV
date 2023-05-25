@@ -1,24 +1,22 @@
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        """
-        or we can use normal variable to count them instead of dictionary because
-        we can only have eith 5, 10 or 20 dollar
-        """
-        count5, count10 = 0, 0
-        for i in range(len(bills)):
-            if bills[i] == 5:
-                count5 += 1
-            elif bills[i] == 10:
-                count10 += 1
-                if not count5:
+        mydict = defaultdict(int)
+        for money in bills:
+            if money == 5:
+                mydict[5] += 1
+            elif money == 10:
+                mydict[10] += 1
+                if mydict[5]:
+                    mydict[5] -= 1
+                else:
                     return False
-                count5 -= 1
-            else:
-                if count10 and count5:
-                    count10 -= 1
-                    count5 -= 1
-                elif count5 > 2:
-                    count5 -= 3
+            else: # money == 20
+                mydict[20] += 1
+                if mydict[10] and mydict[5]:
+                    mydict[10] -= 1
+                    mydict[5] -= 1
+                elif mydict[5] >= 3:
+                    mydict[5] -= 3
                 else:
                     return False
         return True
