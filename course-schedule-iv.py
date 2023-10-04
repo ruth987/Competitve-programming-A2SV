@@ -1,27 +1,21 @@
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
-        neighbors = {node:set() for node in range(numCourses)}
-        incomming = defaultdict(int)
-        preLookup = defaultdict(set)
+        matrix = [[float('inf')]*numCourses for _ in range(numCourses)]
 
-        for pre,aft in prerequisites:
-            neighbors[pre].add(aft)
-            incomming[aft] += 1
-        
-        qu = deque()
-        for n in neighbors:
-            if incomming[n] == 0:
-                qu.append(n)
-        
-        while qu:
-            cur = qu.popleft()
-            for neig in neighbors[cur]:
-                preLookup[neig].add(cur)
-                preLookup[neig].update(preLookup[cur])
+        for start,end in prerequisites:
+            matrix[start][end] = 1 
 
-                incomming[neig] -= 1
-                if incomming[neig] == 0:
-                    qu.append(neig)
-        
-        result = [q[0] in preLookup[q[1]] for q in queries]
-        return result
+        for j in range(numCourses): 
+            matrix[j][j] = 0
+
+        for k in range(numCourses):
+            for i in range(numCourses):
+                for j in range(numCourses): 
+                    matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j])
+        ans = []
+        for s, e in queries:
+            if matrix[s][e] != float('inf'):
+                ans.append(True)
+            else:
+                ans.append(False)
+        return ans
