@@ -6,21 +6,25 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        total = 0
-        def helper(root, curr):
-            nonlocal total
+        """
+        to calculate every path possibilities we can do dfs for each node 
+        considering the two conditions:
+            - if i keep going with the past node
+            - if i start from that root node
+        """
+        
+        def dfs(root, sum_):
             if not root:
-                return
-            helper(root.left, curr+root.val)
-            helper(root.right, curr+root.val)
-            if curr+root.val == targetSum:
-                total += 1
+                return 0
 
-        def dfs(root):
-            if not root:
-                return 
-            helper(root, 0)
-            dfs(root.left)
-            dfs(root.right)
-        dfs(root)
-        return total
+            count = 0
+            if root.val == sum_: 
+                count += 1
+
+            count += dfs(root.left, sum_ - root.val) + dfs(root.right, sum_ - root.val)
+            return count
+        
+        if not root:
+            return 0
+
+        return self.pathSum(root.left, targetSum) + self.pathSum(root.right, targetSum) + dfs(root, targetSum)
